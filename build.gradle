@@ -1,4 +1,10 @@
-apply plugin: 'java'
+plugins {
+
+    id 'java'
+    id 'idea'
+    id 'net.minecrell.licenser' version '0.3'
+
+}
 
 group = pluginGroup
 version = pluginVersion
@@ -16,6 +22,15 @@ repositories {
 
 dependencies {
     compile 'org.bukkit:bukkit:1.11-R0.1-SNAPSHOT'
+}
+
+license {
+
+    header = project.file('HEADER.txt')
+
+    include '**/*.java'
+    exclude '**/Metrics.java'
+
 }
 
 import org.apache.tools.ant.filters.ReplaceTokens
