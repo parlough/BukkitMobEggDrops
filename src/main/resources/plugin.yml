@@ -1,0 +1,31 @@
+name: MobEggDrops
+version: @version@
+main: com.meronat.mobeggdrops.MobEggDrops
+prefix: MED
+authors: [Meronat]
+description: Allows mobs to drop their respective mob egg with a configurable percent chance.
+website: http://meronat.com
+
+commands:
+  med:
+    description: Reloads the plugin's configuration.
+    aliases: [medreload]
+    permission: mobeggdrops.reload
+    usage: /med
+  medchances:
+    description: Views the chances of each mob dropping their egg.
+    permission: mobeggdrops.chances
+    usage: /medchances
+
+permissions:
+  mobeggdrops.*:
+    description: Gives access to all MobEggDrops commands.
+    children:
+      mobeggdrops.reload: true
+      mobeggdrops.chances: true
+  mobeggdrops.reload:
+    description: Allows you to reload the MobEggDrops configuration.
+    default: op
+  mobeggdrops.chances:
+    description: Allows you to view all chances of mobs dropping their egg.
+    default: true
