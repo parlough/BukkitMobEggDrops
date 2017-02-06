@@ -36,15 +36,12 @@ public class ChancesCommand implements CommandExecutor {
 
     private MobEggDrops plugin;
 
-    public ChancesCommand(MobEggDrops plugin) {
-
+    ChancesCommand(MobEggDrops plugin) {
         this.plugin = plugin;
-
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-
         Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
 
             sender.sendMessage(ChatColor.DARK_GREEN + "Chances of mobs dropping their egg equivalent:");
@@ -62,7 +59,6 @@ public class ChancesCommand implements CommandExecutor {
         });
 
         return true;
-
     }
 
 }

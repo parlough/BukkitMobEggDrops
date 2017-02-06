@@ -32,78 +32,71 @@ public final class MobEggDrops extends JavaPlugin {
 
     @Override
     public void onEnable() {
-
         this.loadConfig();
 
         this.getServer().getPluginManager().registerEvents(new EntityDeathListener(this), this);
 
         this.getCommand("med").setExecutor(new ReloadCommand(this));
         this.getCommand("medchances").setExecutor(new ChancesCommand(this));
-
     }
 
     private void loadConfig() {
-
         FileConfiguration config = this.getConfig();
 
-        config.addDefault("BAT", 5);
-        config.addDefault("BLAZE", 5);
-        config.addDefault("CAVE_SPIDER", 5);
-        config.addDefault("CHICKEN", 5);
-        config.addDefault("COW", 5);
-        config.addDefault("CREEPER", 5);
-        config.addDefault("DONKEY", 5);
-        config.addDefault("ELDER_GUARDIAN", 5);
-        config.addDefault("ENDERMAN", 5);
-        config.addDefault("ENDERMITE", 5);
-        config.addDefault("EVOKER", 5);
-        config.addDefault("GHAST", 5);
-        config.addDefault("GUARDIAN", 5);
-        config.addDefault("HORSE", 5);
-        config.addDefault("HUSK", 5);
-        config.addDefault("LLAMA", 5);
-        config.addDefault("MAGMA_CUBE", 5);
-        config.addDefault("MUSHROOM_COW", 5);
-        config.addDefault("MULE", 5);
-        config.addDefault("OCELOT", 5);
-        config.addDefault("PIG", 5);
-        config.addDefault("POLAR_BEAR", 5);
-        config.addDefault("RABBIT", 5);
-        config.addDefault("SHEEP", 5);
-        config.addDefault("SHULKER", 5);
-        config.addDefault("SILVERFISH", 5);
-        config.addDefault("SKELETON", 5);
-        config.addDefault("SKELETON_HORSE", 5);
-        config.addDefault("SLIME", 5);
-        config.addDefault("SPIDER", 5);
-        config.addDefault("SQUID", 5);
-        config.addDefault("STRAY", 5);
-        config.addDefault("VEX", 5);
-        config.addDefault("VILLAGER", 5);
-        config.addDefault("VINDICATOR", 5);
-        config.addDefault("WITCH", 5);
-        config.addDefault("WITHER_SKELETON", 5);
-        config.addDefault("WOLF", 5);
-        config.addDefault("ZOMBIE", 5);
-        config.addDefault("ZOMBIE_HORSE", 5);
-        config.addDefault("PIG_ZOMBIE", 5);
-        config.addDefault("ZOMBIE_VILLAGER", 5);
+        config.addDefault("check-permission", false);
+        config.addDefault("BAT", 1.0);
+        config.addDefault("BLAZE", 1.0);
+        config.addDefault("CAVE_SPIDER", 1.0);
+        config.addDefault("CHICKEN", 1.0);
+        config.addDefault("COW", 1.0);
+        config.addDefault("CREEPER", 1.0);
+        config.addDefault("DONKEY", 1.0);
+        config.addDefault("ELDER_GUARDIAN", 1.0);
+        config.addDefault("ENDERMAN", 1.0);
+        config.addDefault("ENDERMITE", 1.0);
+        config.addDefault("EVOKER", 1.0);
+        config.addDefault("GHAST", 1.0);
+        config.addDefault("GUARDIAN", 1.0);
+        config.addDefault("HORSE", 1.0);
+        config.addDefault("HUSK", 1.0);
+        config.addDefault("LLAMA", 1.0);
+        config.addDefault("MAGMA_CUBE", 1.0);
+        config.addDefault("MUSHROOM_COW", 1.0);
+        config.addDefault("MULE", 1.0);
+        config.addDefault("OCELOT", 1.0);
+        config.addDefault("PIG", 1.0);
+        config.addDefault("POLAR_BEAR", 1.0);
+        config.addDefault("RABBIT", 1.0);
+        config.addDefault("SHEEP", 1.0);
+        config.addDefault("SHULKER", 1.0);
+        config.addDefault("SILVERFISH", 1.0);
+        config.addDefault("SKELETON", 1.0);
+        config.addDefault("SKELETON_HORSE", 1.0);
+        config.addDefault("SLIME", 1.0);
+        config.addDefault("SPIDER", 1.0);
+        config.addDefault("SQUID", 1.0);
+        config.addDefault("STRAY", 1.0);
+        config.addDefault("VEX", 1.0);
+        config.addDefault("VILLAGER", 1.0);
+        config.addDefault("VINDICATOR", 1.0);
+        config.addDefault("WITCH", 1.0);
+        config.addDefault("WITHER_SKELETON", 1.0);
+        config.addDefault("WOLF", 1.0);
+        config.addDefault("ZOMBIE", 1.0);
+        config.addDefault("ZOMBIE_HORSE", 1.0);
+        config.addDefault("PIG_ZOMBIE", 1.0);
+        config.addDefault("ZOMBIE_VILLAGER", 1.0);
 
         config.options().copyDefaults(true);
         this.saveConfig();
-
     }
 
-    public boolean properEntity(String entity) {
-
+    boolean properEntity(String entity) {
         return this.getConfig().contains(entity);
-
     }
 
-    public int getChance(String entity) {
-
-        return this.getConfig().getInt(entity);
-
+    double getChance(String entity) {
+        return this.getConfig().getDouble(entity);
     }
 
 }

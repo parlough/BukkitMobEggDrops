@@ -23,9 +23,13 @@ permissions:
     children:
       mobeggdrops.reload: true
       mobeggdrops.chances: true
+      mobeggdrops.drops: true
   mobeggdrops.reload:
     description: Allows you to reload the MobEggDrops configuration.
     default: op
   mobeggdrops.chances:
     description: Allows you to view all chances of mobs dropping their egg.
     default: true
+  mobeggdrops.drops:
+    description: Allows players to get egg drops if permission checking is enabled.
+    default: op

@@ -41,13 +41,16 @@ public final class EntityDeathListener implements Listener {
     private MobEggDrops plugin;
 
     EntityDeathListener(MobEggDrops plugin) {
-
         this.plugin = plugin;
-
     }
 
     @EventHandler
     public void onEntityDeath(EntityDeathEvent event) {
+        if (plugin.getConfig().getBoolean("check-permission")) {
+            if (event.getEntity().getKiller() == null || !event.getEntity().getKiller().hasPermission("mobeggdrops.drops")) {
+                return;
+            }
+        }
 
         EntityType type = event.getEntityType();
 
@@ -55,13 +58,13 @@ public final class EntityDeathListener implements Listener {
             return;
         }
 
-        int chance = this.plugin.getChance(type.toString());
+        double chance = this.plugin.getChance(type.toString());
 
-        if (chance == 0) {
+        if (chance <= 0) {
             return;
         }
 
-        if (chance < ThreadLocalRandom.current().nextInt(0, 101)) {
+        if (chance < ThreadLocalRandom.current().nextDouble(0.0, 100.1)) {
             return;
         }
 
@@ -80,7 +83,6 @@ public final class EntityDeathListener implements Listener {
         egg.setAmount(1);
 
         event.getDrops().add(egg);
-
     }
 
 }
